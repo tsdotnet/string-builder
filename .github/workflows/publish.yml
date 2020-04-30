@@ -28,10 +28,6 @@ jobs:
         with:
           registry-url: "https://registry.npmjs.org"
 
-      - name: Install dependencies
-        if: steps.check.outputs.changed == 'true'
-        run: npm install --only=prod
-
       - name: Publish package to NPM
         if: steps.check.outputs.changed == 'true'
         run: npm publish --access public
