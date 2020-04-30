@@ -1,10 +1,8 @@
-"use strict";
 /*!
  * @author electricessence / https://github.com/electricessence/
  * .NET Reference: http://referencesource.microsoft.com/#mscorlib/system/text/StringBuilder.cs
  * Licensing: MIT
  */
-Object.defineProperty(exports, "__esModule", { value: true });
 /*****************************
  * IMPORTANT NOTES ABOUT PERFORMANCE:
  * http://jsperf.com/string-concatenation-looped
@@ -16,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *****************************/
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const EMPTY = '';
-class StringBuilder {
+export default class StringBuilder {
     constructor(...initial) {
         this.newLine = '\n';
         this._latest = null;
@@ -84,5 +82,4 @@ class StringBuilder {
         this.clear();
     }
 }
-exports.default = StringBuilder;
 //# sourceMappingURL=StringBuilder.js.map
