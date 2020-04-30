@@ -19,7 +19,7 @@
     "prepublishOnly": "npm run build && npm run test",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags",
-    "test": "ts-node -P ./spec/tsconfig.json ./node_modules/jasmine/bin/jasmine --config=spec/jasmine.json"
+    "test": "ts-node -P ./tsconfig.json ./node_modules/jasmine/bin/jasmine --config=spec/jasmine.json"
   },
   "repository": {
     "type": "git",
