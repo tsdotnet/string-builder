@@ -15,8 +15,8 @@
     "build": "npm prune && npm install && npm run clean && copyfiles -u 1 src/**/*.d.ts dist && tsc && tsc -p tsconfig.esm.json",
     "bump": "npm run precommit && npm version patch",
     "lint": "eslint src/**/*.ts",
-    "precommit": "npm run lint && npm run test && npm run build",
-    "prepublishOnly": "npm run build && npm run test",
+    "precommit": "npm run lint && npm run test && npm run build && node validate-package.js",
+    "prepublishOnly": "npm run build && node validate-package.js && npm run test",
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags",
     "test": "ts-node -P ./tsconfig.json ./node_modules/jasmine/bin/jasmine --config=spec/jasmine.json"
