@@ -8,4 +8,4 @@ A class for building strings.
 
 ## Docs
 
-[tsdotnet.github.io/[package-name]](https://tsdotnet.github.io/[package-name]/)
+[tsdotnet.github.io/string-builder](https://tsdotnet.github.io/string-builder/)
