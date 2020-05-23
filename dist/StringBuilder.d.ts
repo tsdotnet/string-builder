@@ -9,7 +9,7 @@ export default class StringBuilder {
     constructor(...initial: any[]);
     newLine: string;
     setNewLine(newLine: string): this;
-    appendSingle(item: any): this;
+    appendSingle(item: unknown): this;
     appendThese(items: any[]): this;
     append(...items: any[]): this;
     appendLine(...items: any[]): this;

@@ -29,27 +29,30 @@ export default class StringBuilder
 		this._partArray = [];
 		this.appendThese(initial);
     }
-    
-    newLine: string = '\n';
 
-    setNewLine (newLine: string): this
-    {
-        if(newLine==null) throw new Error('\'newLine\' cannot be null or undefined.');
-        this.newLine = newLine;
-        return this;
-    }
+	newLine: string = '\n';
 
-	appendSingle(item: any): this {
-		if (item != null) {
+	setNewLine (newLine: string): this
+	{
+		if(newLine==null) throw new Error('\'newLine\' cannot be null or undefined.');
+		this.newLine = newLine;
+		return this;
+	}
+
+	appendSingle (item: unknown): this
+	{
+		if(item!=null)
+		{
 			this._latest = null;
-			switch (typeof item) {
+			switch(typeof item)
+			{
 				case 'object':
 				case 'function':
-					item = item.toString();
+					item = (item as any).toString();
 					break;
 			}
 			this._partArray.push(item); // Other primitive types can keep their format since a number or boolean is a smaller footprint than a string.
-        }
+		}
         return this;
 	}
 
