@@ -11,7 +11,7 @@
     "StringBuilder"
   ],
   "scripts": {
-    "build:dist": "rimraf dist/* && copyfiles -u 1 src/**/*.d.ts dist && tsc",
+    "build:dist": "rimraf dist/* && tsc && copyfiles -u 1 src/**/*.d.ts dist",
     "build:dist-esm": "rimraf dist-esm/* && tsc -p tsconfig.esm.json",
     "build": "pnpm i && run-p build:*",
     "bump": "npm run precommit && npm version patch",
