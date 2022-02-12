@@ -28,7 +28,7 @@ export default class StringBuilder
 		this._latest = null;
 		this._partArray = [];
 		this.appendThese(initial);
-    }
+	}
 
 	newLine: string = '\n';
 
@@ -53,11 +53,11 @@ export default class StringBuilder
 			}
 			this._partArray.push(item); // Other primitive types can keep their format since a number or boolean is a smaller footprint than a string.
 		}
-        return this;
+		return this;
 	}
 
 	appendThese(items: any[]): this {
-        for(const s of items) this.appendSingle(s);
+		for(const s of items) this.appendSingle(s);
 		return this;
 	}
 
@@ -87,8 +87,8 @@ export default class StringBuilder
 
 	toString(): string {
 		let latest = this._latest;
-        if (latest == null)
-            this._latest = latest = this._partArray.join(EMPTY);
+		if (latest == null)
+			this._latest = latest = this._partArray.join(EMPTY);
 		return latest;
 	}
 
