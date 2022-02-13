@@ -1,6 +1,6 @@
 {
   "name": "@tsdotnet/string-builder",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "author": "electricessence",
   "license": "MIT",
   "types": "dist/StringBuilder.d.ts",
