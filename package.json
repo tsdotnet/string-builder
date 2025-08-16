@@ -21,13 +21,15 @@
     "build:cjs": "rimraf dist && tsc && copyfiles -u 1 src/**/*.d.ts dist",
     "build:esm": "rimraf temp-esm && tsc -p tsconfig.esm.json --outDir temp-esm && node -e \"require('fs').readdirSync('temp-esm').forEach(f=>{if(f.endsWith('.js')){require('fs').copyFileSync('temp-esm/'+f,'dist/'+f.replace('.js','.mjs'));} if(f.endsWith('.js.map')){require('fs').copyFileSync('temp-esm/'+f,'dist/'+f.replace('.js.map','.mjs.map'));}});\" && rimraf temp-esm",
     "build": "pnpm i && pnpm run build:cjs && pnpm run build:esm",
+    "bump": "pnpm precommit && npm version patch",
     "docs": "rimraf docs && typedoc --options typedoc.json --readme none",
     "lint": "eslint src/**/*.ts",
-    "precommit": "pnpm i && concurrently \"pnpm:lint\" \"pnpm:test\" && concurrently \"pnpm:build:*\" && git status -s",
-    "prepublishOnly": "pnpm run build && pnpm run test",
+    "precommit": "pnpm i && concurrently \"pnpm:lint\" \"pnpm:test\" && concurrently \"pnpm:build:*\" && pnpm run validate && git status -s",
+    "prepublishOnly": "pnpm run build && pnpm run validate && pnpm run test",
     "preversion": "concurrently \"pnpm:lint\" \"pnpm:test\"",
     "postversion": "git push && git push --tags && pnpm run docs && git add -A && git commit -m \"Updated docs.\" docs && git push",
-    "test": "mocha -r ts-node/register tests/**/*.ts"
+    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "validate": "node ./.build/validate-package.js"
   },
   "repository": {
     "type": "git",
