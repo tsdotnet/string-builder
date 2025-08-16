@@ -14,7 +14,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * It is clearly inefficient to use a StringBuilder or LinkedList to build a string when you have a small set of string portions.
  * StringBuilder will really show it's benefit likely somewhere above 1000 items.
  *****************************/
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const EMPTY = '';
 class StringBuilder {
     constructor(...initial) {

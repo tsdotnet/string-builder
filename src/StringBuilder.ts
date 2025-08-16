@@ -14,7 +14,7 @@
  * StringBuilder will really show it's benefit likely somewhere above 1000 items.
  *****************************/
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 
 const EMPTY = '';
 
