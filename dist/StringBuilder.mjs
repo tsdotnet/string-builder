@@ -15,12 +15,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const EMPTY = '';
 export default class StringBuilder {
+    //noinspection JSMismatchedCollectionQueryUpdate
+    _partArray;
+    _latest; // AKA persistentString
     constructor(...initial) {
-        this.newLine = '\n';
         this._latest = null;
         this._partArray = [];
         this.appendThese(initial);
     }
+    newLine = '\n';
     setNewLine(newLine) {
         if (newLine == null)
             throw new Error('\'newLine\' cannot be null or undefined.');
