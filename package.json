@@ -5,12 +5,12 @@
   "license": "MIT",
   "types": "dist/StringBuilder.d.ts",
   "main": "dist/StringBuilder.js",
-  "module": "dist/index.mjs",
+  "module": "dist/StringBuilder.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/StringBuilder.mjs",
+      "require": "./dist/StringBuilder.js",
+      "types": "./dist/StringBuilder.d.ts"
     }
   },
   "keywords": [
@@ -23,8 +23,8 @@
     "build": "pnpm i && pnpm run build:cjs && pnpm run build:esm",
     "docs": "rimraf docs && typedoc --options typedoc.json --readme none",
     "lint": "eslint src/**/*.ts",
-    "precommit": "pnpm i && concurrently \"pnpm:lint\" \"pnpm:test\" && concurrently \"pnpm:build:*\" && pnpm run validate && git status -s",
-    "prepublishOnly": "pnpm run build && concurrently \"pnpm:validate\" \"pnpm:test\"",
+    "precommit": "pnpm i && concurrently \"pnpm:lint\" \"pnpm:test\" && concurrently \"pnpm:build:*\" && git status -s",
+    "prepublishOnly": "pnpm run build && pnpm run test",
     "preversion": "concurrently \"pnpm:lint\" \"pnpm:test\"",
     "postversion": "git push && git push --tags && pnpm run docs && git add -A && git commit -m \"Updated docs.\" docs && git push",
     "test": "mocha -r ts-node/register tests/**/*.ts"
