@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./dist/esm",
     "declaration": false,
-    "module": "node16",
-    "moduleResolution": "node16"
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2022"
   }
 }
