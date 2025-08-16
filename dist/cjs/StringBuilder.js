@@ -1,8 +1,10 @@
+"use strict";
 /*!
  * @author electricessence / https://github.com/electricessence/
  * .NET Reference: http://referencesource.microsoft.com/#mscorlib/system/text/StringBuilder.cs
  * Licensing: MIT
  */
+Object.defineProperty(exports, "__esModule", { value: true });
 /*****************************
  * IMPORTANT NOTES ABOUT PERFORMANCE:
  * http://jsperf.com/string-concatenation-looped
@@ -14,16 +16,13 @@
  *****************************/
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const EMPTY = '';
-export default class StringBuilder {
-    //noinspection JSMismatchedCollectionQueryUpdate
-    _partArray;
-    _latest; // AKA persistentString
+class StringBuilder {
     constructor(...initial) {
+        this.newLine = '\n';
         this._latest = null;
         this._partArray = [];
         this.appendThese(initial);
     }
-    newLine = '\n';
     setNewLine(newLine) {
         if (newLine == null)
             throw new Error('\'newLine\' cannot be null or undefined.');
@@ -85,4 +84,5 @@ export default class StringBuilder {
         this.clear();
     }
 }
+exports.default = StringBuilder;
 //# sourceMappingURL=StringBuilder.js.map

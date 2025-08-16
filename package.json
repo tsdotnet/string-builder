@@ -4,12 +4,15 @@
   "author": "electricessence",
   "license": "MIT",
   "types": "dist/StringBuilder.d.ts",
-  "main": "dist/StringBuilder.js",
-  "module": "dist/StringBuilder.mjs",
+  "main": "dist/cjs/StringBuilder.js",
+  "module": "dist/esm/StringBuilder.js",
+  "umd:main": "dist/umd/StringBuilder.js",
+  "unpkg": "dist/umd/StringBuilder.js",
+  "jsdelivr": "dist/umd/StringBuilder.js",
   "exports": {
     ".": {
-      "import": "./dist/StringBuilder.mjs",
-      "require": "./dist/StringBuilder.js",
+      "import": "./dist/esm/StringBuilder.js",
+      "require": "./dist/cjs/StringBuilder.js",
       "types": "./dist/StringBuilder.d.ts"
     }
   },
@@ -18,17 +21,20 @@
     "StringBuilder"
   ],
   "scripts": {
-    "build:cjs": "rimraf dist && tsc && copyfiles -u 1 src/**/*.d.ts dist",
-    "build:esm": "rimraf temp-esm && tsc -p tsconfig.esm.json --outDir temp-esm && node -e \"require('fs').readdirSync('temp-esm').forEach(f=>{if(f.endsWith('.js')){require('fs').copyFileSync('temp-esm/'+f,'dist/'+f.replace('.js','.mjs'));} if(f.endsWith('.js.map')){require('fs').copyFileSync('temp-esm/'+f,'dist/'+f.replace('.js.map','.mjs.map'));}});\" && rimraf temp-esm",
-    "build": "pnpm i && pnpm run build:cjs && pnpm run build:esm",
-    "bump": "pnpm precommit && npm version patch",
+    "clean": "rimraf dist",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:umd": "tsc -p tsconfig.umd.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build": "pnpm i && pnpm run clean && concurrently \"pnpm:build:*\"",
+    "bump": "pnpm run precommit && pnpm version patch",
     "docs": "rimraf docs && typedoc --options typedoc.json --readme none",
     "lint": "eslint src/**/*.ts",
-    "precommit": "pnpm i && concurrently \"pnpm:lint\" \"pnpm:test\" && concurrently \"pnpm:build:*\" && pnpm run validate && git status -s",
+    "precommit": "pnpm i && pnpm run build && pnpm run lint && pnpm run validate && pnpm run test && git status -s",
     "prepublishOnly": "pnpm run build && pnpm run validate && pnpm run test",
-    "preversion": "concurrently \"pnpm:lint\" \"pnpm:test\"",
+    "preversion": "pnpm run lint && pnpm run test",
     "postversion": "git push && git push --tags && pnpm run docs && git add -A && git commit -m \"Updated docs.\" docs && git push",
-    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "test": "tsx node_modules/mocha/bin/_mocha tests/**/*.ts",
     "validate": "node ./.build/validate-package.js"
   },
   "repository": {
@@ -50,7 +56,7 @@
     "eslint": "^9.33.0",
     "mocha": "^11.7.1",
     "rimraf": "^6.0.1",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.4",
     "typedoc": "^0.28.10",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.39.1"

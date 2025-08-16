@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/esm",
+    "outDir": "./dist/cjs",
     "declaration": false,
-    "module": "node16",
-    "moduleResolution": "node16"
+    "module": "commonjs",
+    "target": "es2018"
   }
 }
