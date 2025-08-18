@@ -3,20 +3,10 @@
  * .NET Reference: http://referencesource.microsoft.com/#mscorlib/system/text/StringBuilder.cs
  * Licensing: MIT
  */
-/*****************************
- * IMPORTANT NOTES ABOUT PERFORMANCE:
- * http://jsperf.com/string-concatenation-looped
- * http://jsperf.com/adding-strings-to-an-array
- * http://jsperf.com/string-concatenation-versus-array-operations-with-join
- *
- * It is clearly inefficient to use a StringBuilder or LinkedList to build a string when you have a small set of string portions.
- * StringBuilder will really show it's benefit likely somewhere above 1000 items.
- *****************************/
 const EMPTY = '';
-export default class StringBuilder {
-    //noinspection JSMismatchedCollectionQueryUpdate
+class StringBuilder {
     _partArray;
-    _latest; // AKA persistentString
+    _latest;
     constructor(...initial) {
         this._latest = null;
         this._partArray = [];
@@ -38,7 +28,7 @@ export default class StringBuilder {
                     item = item.toString();
                     break;
             }
-            this._partArray.push(item); // Other primitive types can keep their format since a number or boolean is a smaller footprint than a string.
+            this._partArray.push(item);
         }
         return this;
     }
@@ -84,4 +74,6 @@ export default class StringBuilder {
         this.clear();
     }
 }
+
+export { StringBuilder as default };
 //# sourceMappingURL=StringBuilder.js.map

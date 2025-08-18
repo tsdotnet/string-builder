@@ -1,4 +1,4 @@
-import {expect} from 'chai';
+import { describe, it, expect } from 'vitest';
 import StringBuilder from '../src/StringBuilder';
 
 describe('StringBuilder', () => {

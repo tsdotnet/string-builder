@@ -5,15 +5,6 @@
  * Licensing: MIT
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-/*****************************
- * IMPORTANT NOTES ABOUT PERFORMANCE:
- * http://jsperf.com/string-concatenation-looped
- * http://jsperf.com/adding-strings-to-an-array
- * http://jsperf.com/string-concatenation-versus-array-operations-with-join
- *
- * It is clearly inefficient to use a StringBuilder or LinkedList to build a string when you have a small set of string portions.
- * StringBuilder will really show it's benefit likely somewhere above 1000 items.
- *****************************/
 const EMPTY = '';
 class StringBuilder {
     constructor(...initial) {
@@ -37,7 +28,7 @@ class StringBuilder {
                     item = item.toString();
                     break;
             }
-            this._partArray.push(item); // Other primitive types can keep their format since a number or boolean is a smaller footprint than a string.
+            this._partArray.push(item);
         }
         return this;
     }
