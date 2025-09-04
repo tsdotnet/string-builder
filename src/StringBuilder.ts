@@ -67,7 +67,8 @@ export default class StringBuilder
 	}
 
 	appendLine(...items: any[]): this {
-		this.appendLines(items);
+		if(items?.length) this.appendLines(items);
+		else this._partArray.push(this.newLine);
 		return this;
 	}
 

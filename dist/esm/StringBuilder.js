@@ -42,7 +42,10 @@ class StringBuilder {
         return this;
     }
     appendLine(...items) {
-        this.appendLines(items);
+        if (items?.length)
+            this.appendLines(items);
+        else
+            this._partArray.push(this.newLine);
         return this;
     }
     appendLines(items) {

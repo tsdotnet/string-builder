@@ -119,6 +119,33 @@ describe('StringBuilder', () => {
 			sb.appendLines(['first', 'second']);
 			expect(sb.toString()).toBe('first\nsecond\n');
 		});
+
+		it('should add newline when appendLine called with no parameters', () => {
+			const sb = new StringBuilder();
+			sb.append('content');
+			sb.appendLine(); // No parameters
+			sb.append('more');
+			expect(sb.toString()).toBe('content\nmore');
+			expect(sb.toString()).toContain('\n');
+		});
+
+		it('should add multiple newlines when appendLine called multiple times with no parameters', () => {
+			const sb = new StringBuilder();
+			sb.append('line1');
+			sb.appendLine(); // First newline
+			sb.appendLine(); // Second newline (empty line)
+			sb.append('line2');
+			expect(sb.toString()).toBe('line1\n\nline2');
+		});
+
+		it('should use custom newline when appendLine called with no parameters', () => {
+			const sb = new StringBuilder();
+			sb.setNewLine('\r\n');
+			sb.append('content');
+			sb.appendLine(); // Should use \r\n
+			sb.append('more');
+			expect(sb.toString()).toBe('content\r\nmore');
+		});
 	});
 
 	describe('newLine handling', () => {
