@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import StringBuilder from '../src/StringBuilder';
+import StringBuilder from '../src/StringBuilder.js';
 
 describe('StringBuilder', () => {
 

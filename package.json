@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build:types": "cpy \"src/**/*.d.ts\" dist/types --parents && tsc -p tsconfig.types.json",
+    "copy:dts": "cpy \"src/**/*.d.ts\" dist/types --parents || echo No .d.ts files to copy",
+    "build:types": "pnpm copy:dts && tsc -p tsconfig.types.json",
     "build:esm": "rollup -c rollup.config.js",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build": "pnpm clean && pnpm build:types && pnpm build:esm && pnpm build:cjs && pnpm typecheck:tests",
