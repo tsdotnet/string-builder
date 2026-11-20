@@ -1,4 +1,4 @@
-<a href="https://tsdotnet.github.io/string-builder/"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/string-builder@master/assets/banner.svg" alt="@tsdotnet/string-builder: Build text piece by piece. Append now, join once."></a>
+<a name="banner"><img src="https://cdn.jsdelivr.net/gh/tsdotnet/string-builder@master/assets/banner.svg" alt="@tsdotnet/string-builder: Build text piece by piece. Append now, join once."></a>
 
 [![npm version](https://img.shields.io/npm/v/@tsdotnet/string-builder.svg?style=flat-square)](https://www.npmjs.com/package/@tsdotnet/string-builder)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/tsdotnet/string-builder/blob/master/LICENSE)
